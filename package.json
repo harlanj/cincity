@@ -1,5 +1,5 @@
 {
-  "name": "Cin City",
+  "name": "cincity",
   "description": "Locate the great things in Cincinnati",
   "private": true,
   "license": "MIT",
@@ -48,7 +48,8 @@
     "view-helpers": "~0.1.4",
     "mean-logger": "0.0.1",
     "bower": "~1.2.8",
-    "forever": "~0.10.11"
+    "forever": "~0.10.11",
+    "lodash": "~2.4.1"
   },
   "devDependencies": {
     "supertest": "0.8.2",
