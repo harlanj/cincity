@@ -2,7 +2,6 @@
 
 module.exports = {
     db: "mongodb://localhost/cincity-dev",
-    root: rootPath,
     app: {
         name: "Cin City - Development"
     },
