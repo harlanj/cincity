@@ -1,0 +1,62 @@
+{
+  "name": "Cin City",
+  "description": "Locate the great things in Cincinnati",
+  "private": true,
+  "license": "MIT",
+  "version": "0.0.1",
+  "author": "Jeremiah Harlan <jeremiah.harlan@gmail.com>",
+  "contributors": [
+        {
+            "name": "Jeremiah Harlan",
+            "email": "jeremiah.harlan@gmail.com"
+        }
+    ],
+    "scripts": {
+        "start": "nodemon server.js --debug"
+    },
+  "homepage": "https://github.com/harlanj/cincity",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harlanj/cincity.git"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "redis": "latest",
+    "winston": "0.7.x",
+    "knox": "~0.8.4",
+    "validator": "~1.3.0",
+    "winston-mongodb": "0.4.2",
+    "ultimate": "0.3.6",
+    "async": "latest",
+    "bcrypt": "0.7.7",
+    "moment": "2.4.0",
+    "express": "~3.4.7",
+    "jade": "~1.0.2",
+    "mongoose": "~3.8.3",
+    "connect-mongo": "~0.4.0",
+    "connect-flash": "~0.1.1",
+    "crypto": "0.0.3",
+    "passport": "~0.1.18",
+    "passport-local": "~0.1.6",
+    "passport-facebook": "~1.0.2",
+    "passport-twitter": "~1.0.2",
+    "passport-github": "~0.1.5",
+    "passport-google-oauth": "~0.1.5",
+    "passport-linkedin": "~0.1.3",
+    "view-helpers": "~0.1.4",
+    "mean-logger": "0.0.1",
+    "bower": "~1.2.8",
+    "forever": "~0.10.11"
+  },
+  "devDependencies": {
+    "supertest": "0.8.2",
+    "should": "2.1.1",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-nodemon": "0.1.2",
+    "grunt-concurrent": "latest",
+    "grunt-mocha-test": "latest"
+  }
+}
