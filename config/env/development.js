@@ -6,8 +6,8 @@ module.exports = {
         name: "Cin City - Development"
     },
     facebook: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
+        clientID: "589133697847778",
+        clientSecret: "4822be5b9a2d4c4adb0a3a0ea6daa3b4",
         callbackURL: "http://localhost:3000/auth/facebook/callback"
     },
     twitter: {
