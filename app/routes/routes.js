@@ -15,10 +15,10 @@ var hasAuthorization = function(req, res, next) {
 /**
  * Models
  */
-var users = require('../app/controllers/user'),
-	articles = require('../app/controllers/article'),
-	index = require('../app/controllers/index'),
-	venues = require('../app/controllers/venue');
+var users = require('../controllers/users'),
+	articles = require('../controllers/articles'),
+	index = require('../controllers/index'),
+	venues = require('../controllers/venues');
 	
 
 module.exports = function(app, passport) {

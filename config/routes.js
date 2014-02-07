@@ -4,7 +4,7 @@
  * Helpers
  */
 var async = require('async');
-var authorization = require('./middlewares/authorization');
+var authorization = require('../middlewares/authorization');
 var hasAuthorization = function(req, res, next) {
 	if (req.article.user.id !== req.user.id) {
 		return res.send(401, 'User is not authorized');
