@@ -1,3 +1,4 @@
+'use strict';
 var path = require('path'),
 	rootPath = path.normalize(__dirname + '/..');
 
@@ -33,11 +34,11 @@ module.exports = {
 		    clientSecret: "SECRET_KEY",
 		    callbackURL: "http://localhost:3000/auth/linkedin/callback"
 		}
-	}
+	},
 
 	test: {
 		db: "mongodb://localhost/cincity-test",
-		port: 3001,
+		root: rootPath,
 		app: {
 		    name: "Cin City - Test"
 		},
@@ -61,10 +62,11 @@ module.exports = {
 		    clientSecret: "APP_SECRET",
 		    callbackURL: "http://localhost:3000/auth/google/callback"
 		}
-	}
+	},
 
 	production: {
 		db: "mongodb://localhost/cincity",
+		root: rootPath,
 		app: {
 		    name: "Cin City"
 		},

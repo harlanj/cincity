@@ -3,7 +3,7 @@
 /**
  * Module dependencies
  */
-var mongoose = require('mongoose');,
+var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 
@@ -59,7 +59,7 @@ VenueSchema.path('owner').validate(function(owner) {
     return (typeof owner === 'string' && owner.length > 0);
 }, 'Username cannot be blank');
 
-UserSchema.path('type').validate(function(type) {
+VenueSchema.path('type').validate(function(type) {
     // if you are authenticating by any of the oauth strategies, don't validate
     if (!this.provider) return true;
     return (typeof type === 'string' && type.length > 0);
@@ -117,4 +117,4 @@ VenueSchema.methods = {
     }
 };
 
-mongoose.model('Venue', UserSchema);
+mongoose.model('Venue', VenueSchema);
