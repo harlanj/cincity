@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
+    request = require('request'),
     LocalStrategy = require('passport-local').Strategy,
     TwitterStrategy = require('passport-twitter').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
@@ -87,6 +88,7 @@ module.exports = function(passport) {
     ));
 
     // Use facebook strategy
+    var photoAccessToken = 'CAACEdEose0cBAH9YUiR71JgFFv7pdYXvUs2PlFvgZBCVu0y7X5E7mN3oIybGhPkPUmIH9yS4bCFZApyj9F35Ex3aZCvG3pvSChHxt1l1QSAY1gPcyWSpipD8xIZA0VtfZB0m25caA21KFSNCrPZA2q4MBhYgIgmIsnCZB28DyKvsyXAgxLzKPQHP4JG9ZBaFnYIZD';
     passport.use(new FacebookStrategy({
             clientID: config.facebook.clientID,
             clientSecret: config.facebook.clientSecret,
@@ -100,16 +102,28 @@ module.exports = function(passport) {
                     return done(err);
                 }
                 if (!user) {
-                    user = new User({
-                        name: profile.displayName,
-                        email: profile.emails[0].value,
-                        username: profile.username,
-                        provider: 'facebook',
-                        facebook: profile._json
-                    });
-                    user.save(function(err) {
-                        if (err) console.log(err);
-                        return done(err, user);
+                    request.get('https://graph.facebook.com/' + profile._json.id + '?fields=id,name,location,picture', {
+                        accessToken: photoAccessToken
+                    }, function(error, response, body){
+                        body = JSON.parse(body);
+                        console.log(body);
+                        if(!error) {
+                            user = new User({
+                                name: profile.displayName,
+                                email: profile.emails[0].value,
+                                username: profile.username,
+                                image: body.picture.data.url,
+                                provider: 'facebook',
+                                facebook: profile._json
+                            });
+                            user.save(function(err) {
+                                if (err) console.log(err);
+                                return done(err, user);
+                            });
+                        }
+                        else {
+                            return done(err, user);
+                        }
                     });
                 } else {
                     return done(err, user);

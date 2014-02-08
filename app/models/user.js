@@ -17,6 +17,7 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
+    image: String,
     hashed_password: String,
     provider: String,
     salt: String,
