@@ -2,12 +2,10 @@
     padding-left:20px;
     margin-left:0
 }
-
 .content {
     margin-top:70px;
     width:100%
 }
-
 footer {
     position:fixed;
     left:0px;
@@ -19,7 +17,9 @@ footer {
     -moz-box-shadow:0 8px 6px 6px black;
     box-shadow:0 8px 6px 6px black
 }
-
 footer p {
     padding:5px 0 12px 10px
+}
+#user-photo {
+    width: 20%;
 }

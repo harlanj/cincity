@@ -11,13 +11,13 @@ module.exports = {
         callbackURL: "http://localhost:3000/auth/facebook/callback"
     },
     twitter: {
-        clientID: "CONSUMER_KEY",
-        clientSecret: "CONSUMER_SECRET",
+        clientID: "GPbgbMjuQcY2IPc52KgQ",
+        clientSecret: "r02FThWGv1lgEoZrPSWQvjxVDTRsje5q26gF6XdwQ",
         callbackURL: "http://localhost:3000/auth/twitter/callback"
     },
     github: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
+        clientID: "075d66b2735ed125a170",
+        clientSecret: "979753293e3518bccaaedb06aee9daa649dd7b2c",
         callbackURL: "http://localhost:3000/auth/github/callback"
     },
     google: {
@@ -26,8 +26,8 @@ module.exports = {
         callbackURL: "http://localhost:3000/auth/google/callback"
     },
     linkedin: {
-        clientID: "API_KEY",
-        clientSecret: "SECRET_KEY",
+        clientID: "77oxgf5hgokj73",
+        clientSecret: "C7aYRbelbPMajMpn",
         callbackURL: "http://localhost:3000/auth/linkedin/callback"
     }
 }

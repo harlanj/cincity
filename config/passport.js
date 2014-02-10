@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
 
 
 module.exports = function(passport) {
-    
+
     // Serialize the user id to push into the session
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -104,10 +104,10 @@ module.exports = function(passport) {
                 if (!user) {
                     request.get('https://graph.facebook.com/' + profile._json.id + '?fields=id,name,location,picture', {
                         accessToken: photoAccessToken
-                    }, function(error, response, body){
+                    }, function(error, response, body) {
                         body = JSON.parse(body);
                         console.log(body);
-                        if(!error) {
+                        if (!error) {
                             user = new User({
                                 name: profile.displayName,
                                 email: profile.emails[0].value,
@@ -120,8 +120,7 @@ module.exports = function(passport) {
                                 if (err) console.log(err);
                                 return done(err, user);
                             });
-                        }
-                        else {
+                        } else {
                             return done(err, user);
                         }
                     });
@@ -147,6 +146,7 @@ module.exports = function(passport) {
                         name: profile.displayName,
                         email: profile.emails[0].value,
                         username: profile.username,
+                        image: profile._json.avatar_url,
                         provider: 'github',
                         github: profile._json
                     });
@@ -172,10 +172,12 @@ module.exports = function(passport) {
                 'google.id': profile.id
             }, function(err, user) {
                 if (!user) {
+                    request.get()
                     user = new User({
                         name: profile.displayName,
                         email: profile.emails[0].value,
                         username: profile.username,
+                        image: profile._json.picture,
                         provider: 'google',
                         google: profile._json
                     });
@@ -195,20 +197,22 @@ module.exports = function(passport) {
             consumerKey: config.linkedin.clientID,
             consumerSecret: config.linkedin.clientSecret,
             callbackURL: config.linkedin.callbackURL,
-            profileFields: ['id', 'first-name', 'last-name', 'email-address']
+            profileFields: ['id', 'first-name', 'last-name', 'email-address', 'picture-url']
         },
         function(accessToken, refreshToken, profile, done) {
-          User.findOne({ 
-                'linkedin.id': profile.id 
-            }, function (err, user) {
+            User.findOne({
+                'linkedin.id': profile.id
+            }, function(err, user) {
                 if (!user) {
                     user = new User({
                         name: profile.displayName,
                         email: profile.emails[0].value,
                         username: profile.emails[0].value,
-                        provider: 'linkedin'
+                        image: profile._json.pictureUrl,
+                        provider: 'linkedin',
+                        linkedin: profile._json
                     });
-                    user.save(function (err) {
+                    user.save(function(err) {
                         if (err) console.log(err);
                         return done(err, user);
                     });
